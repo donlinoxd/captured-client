@@ -69,6 +69,8 @@ mutation loginUser($username: String!, $password: String!) {
     username
     email
     image
+    authorization
+    refresh
     updatedAt
   }
 }

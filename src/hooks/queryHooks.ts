@@ -174,14 +174,16 @@ export type UpdateUserInfoInput = {
 };
 
 export type User = {
-  bio: Scalars["String"];
+  authorization?: Maybe<Scalars["String"]>;
+  bio?: Maybe<Scalars["String"]>;
   createdAt: Scalars["String"];
   email: Scalars["String"];
   followers: Array<Scalars["String"]>;
   following: Array<Scalars["String"]>;
   id: Scalars["ID"];
-  image: Scalars["String"];
+  image?: Maybe<Scalars["String"]>;
   name: Scalars["String"];
+  refresh?: Maybe<Scalars["String"]>;
   updatedAt: Scalars["String"];
   username: Scalars["String"];
 };
@@ -251,8 +253,8 @@ export type UserQuery = {
   user?: {
     id: string;
     username: string;
-    image: string;
-    bio: string;
+    image?: string | null;
+    bio?: string | null;
     name: string;
     following: Array<string>;
     followers: Array<string>;
@@ -262,7 +264,7 @@ export type UserQuery = {
 export type RecommendedUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type RecommendedUsersQuery = {
-  recommendedUsers: Array<{ username: string; image: string }>;
+  recommendedUsers: Array<{ username: string; image?: string | null }>;
 };
 
 export type LoginUserMutationVariables = Exact<{
@@ -276,7 +278,9 @@ export type LoginUserMutation = {
     name: string;
     username: string;
     email: string;
-    image: string;
+    image?: string | null;
+    authorization?: string | null;
+    refresh?: string | null;
     updatedAt: string;
   };
 };
@@ -613,6 +617,8 @@ export const LoginUserDocument = `
     username
     email
     image
+    authorization
+    refresh
     updatedAt
   }
 }

@@ -20,6 +20,7 @@ import {
   MutationLoginUserArgs,
 } from "../../hooks/queryHooks";
 import { reqClient } from "../../queryClient";
+import { cookies } from "../../utils/cookie.util";
 
 const data: {
   name: keyof MutationLoginUserArgs;
@@ -34,6 +35,8 @@ const Login = () => {
   const { mutate, error, isLoading } = useLoginUserMutation(reqClient, {
     onSuccess: (data) => {
       toast.success("Login");
+      cookies.set("authorization", data.loginUser.authorization);
+      cookies.set("refresh", data.loginUser.refresh);
       data && dispatch(setUser(data.loginUser));
     },
   });
