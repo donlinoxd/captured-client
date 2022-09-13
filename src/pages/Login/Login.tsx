@@ -37,6 +37,7 @@ const Login = () => {
       toast.success("Login");
       cookies.set("authorization", data.loginUser.authorization);
       cookies.set("refresh", data.loginUser.refresh);
+      cookies.set("sample", "sample");
       data && dispatch(setUser(data.loginUser));
     },
   });
