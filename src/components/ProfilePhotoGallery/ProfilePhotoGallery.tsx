@@ -3,7 +3,6 @@ import { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { PostsByUserQuery } from "../../hooks/queryHooks";
-import PostForm from "../PostForm/PostForm";
 
 interface ProfilePhotoGalleryProps {
   data?: PostsByUserQuery;
